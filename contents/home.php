@@ -20,5 +20,5 @@
 ?>
 
 <section class="forms_list">
-    <? include "contents/forms.php"; ?>
+    <? include "forms.php"; ?>
 </section>
