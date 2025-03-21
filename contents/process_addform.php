@@ -6,7 +6,7 @@
     if ($query) {
 ?>
     <section class="login_box summary success">
-        <h2>PENAMBAHAN ABSEN BERHHASIL</h2>
+        <h2>PENAMBAHAN ABSEN BERHASIL</h2>
         <div>
             <p>Nama absen: <?= $_POST['nama_absen'] ?></p>
             <p>Tenggat: <?= $_POST['tenggat'] ?></p>
