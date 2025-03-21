@@ -1,7 +1,7 @@
 <?php
-    $action = "?content=fill_form";
-    if (!empty($_SESSION['username']) or !empty($_SESSION['password'])) {
-    $action = "?content=form_detail";
+    #$action = "?content=fill_form";
+    #if (!empty($_SESSION['username']) or !empty($_SESSION['password'])) {
+    #$action = "?content=form_detail";
 ?>
 
 <a class="form_detail" href="?content=addform">
@@ -11,7 +11,7 @@
 </a>
 
 <?php
-    }
+    #}
 
     $query = mysqli_query($con, "SELECT * FROM forms");
     $no = 0;
