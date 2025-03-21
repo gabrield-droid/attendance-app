@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: white;
+    height: max-content;
+}
+
+header h1 {
+    margin: 0 auto;
+    padding: 8px;
+    width: max-content;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+    border-style: solid;
+    border-top: 0;
+    padding: 8px;
+}
+
+.login_info {
+    margin-bottom: 8px;
+}
+
+.login_info p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-block-start: 0.5em;
+    padding-block-end: 0.5em;
+    width: max-content;
+    margin-inline: auto;
+}
+
+.logged a {
+    display: block;
+    width: max-content;
+    margin: auto;
+}
+
+hr {
+    border-style: double;
+}
+
+/* FORM DETAIL */
+
+.form_detail {
+    text-decoration: none;
+    color: initial;
+}
+
+.form_detail div {
+    border-radius: 20px;
+    border-style: dashed;
+    padding: 10px;
+    margin-bottom: 6px;
+}
+
+.add_form h2{
+    width: max-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form_detail:hover div {
+    background-color: grey;
+}
+
+
+/* LOGIN FORM */
+
+.login_box {
+    text-align: center;
+    border-radius: 5px;
+    border-style: dashed;
+    margin-top: 8px;
+    padding: 6px;
+}
+
+.login_box h2{
+    width: auto;
+    margin: auto;
+    margin-bottom: 8px;
+
+}
+
+.login_box form {
+    width: max-content;
+    margin: auto;
+}
+    
+.login_box form input{
+    display: block;
+    margin: auto;
+    margin-bottom: 8px;
+}
+
+.login_box form input[type=submit] {
+    border-style: double;
+    background-color: grey;
+}
+
+/* SUMMARY */
+
+.success {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
+
+/* VIEW FORM DETAIL */
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
