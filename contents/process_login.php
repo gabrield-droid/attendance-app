@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "../library/config.php";
+    include "library/config.php";
 
     $username = $_POST['username'];
     $password = md5($_POST['password']);
@@ -13,7 +13,7 @@
         $_SESSION['username'] = $data['username'];
         $_SESSION['password'] = $data['password'];
 
-        header('location: ../index.php');
+        header('location: index.php');
     }
     else {
         echo "<p align='center'>Login Gagal</p>";
