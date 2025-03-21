@@ -3,7 +3,7 @@
 ?>       
 
 <section class="login_info" class="not_logged">
-    <p>Halo, <? echo $_SESSION['username']; ?> | <a href="?content=logout">Keluar</a></p>
+    <p>Halo, <?php echo $_SESSION['username']; ?> | <a href="?content=logout">Keluar</a></p>
 </section>
 
 <?php            
@@ -20,5 +20,5 @@
 ?>
 
 <section class="forms_list">
-    <? include "forms.php"; ?>
+    <?php include "forms.php"; ?>
 </section>
