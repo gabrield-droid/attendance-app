@@ -6,7 +6,7 @@ include "library/getTime.php";
 $query = mysqli_query($con, "SELECT tenggat FROM forms WHERE id_form='$_GET[id]'");
 $data = mysqli_fetch_array($query);
 
-if (strtotime($data['tenggat']) - getTimeFromNTP()+3600*8 < 0) {
+if (strtotime($data['tenggat']) - (getTimeFromNTP() + (3600 * 8)) < 0) {
 ?>
 
 <section class="login_box summary fail">
