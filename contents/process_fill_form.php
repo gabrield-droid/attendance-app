@@ -15,7 +15,7 @@
     if ($query) {
 ?>
     <section class="login_box summary success">
-        <h2>PENGISIAN ABSEN BERHHASIL</h2>
+        <h2>PENGISIAN ABSEN BERHASIL</h2>
         <div>
             <p>Nama: <?= $_POST['nama'] ?></p>
             <p>NIM: <?= $_POST['nim'] ?></p>
