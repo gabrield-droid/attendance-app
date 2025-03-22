@@ -8,7 +8,7 @@ A simple web app for managing attendance.
    * short_open_tag is enabled
 2. MariaDB Server 10.6
  
-## Installation (:warning: in progress :construction:)
+## Installation ( :warning: in progress :construction:)
 
 > This installation process assumes:
 >
