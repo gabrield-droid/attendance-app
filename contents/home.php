@@ -3,7 +3,7 @@
 ?>       
 
 <section class="login_info" class="not_logged">
-    <p>Halo, <?php echo $_SESSION['username']; ?> | <a href="?content=logout">Keluar</a></p>
+    <p>Halo, <?= $_SESSION['username']; ?> | <a href="?content=logout">Keluar</a></p>
 </section>
 
 <?php            
