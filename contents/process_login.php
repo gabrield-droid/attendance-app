@@ -17,6 +17,6 @@
     }
     else {
         echo "<p align='center'>Login Gagal</p>";
-        echo "<meta http-equiv='refresh' content='2; url=../index.php?content=login'>";
+        echo "<meta http-equiv='refresh' content='2; url=index.php?content=login'>";
     }
 ?>
