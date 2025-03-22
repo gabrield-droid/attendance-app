@@ -1,7 +1,7 @@
 <?php
     $query = mysqli_query($con, "INSERT INTO forms SET name = '$_POST[nama_absen]', tenggat = '$_POST[tenggat]'");
 ?>
-    <a href="../index.php">Kembali</a>
+    <a href="index.php">Kembali</a>
 <?php
     if ($query) {
 ?>

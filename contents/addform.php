@@ -1,4 +1,4 @@
-<a href="../index.php">Kembali</a>
+<a href="index.php">Kembali</a>
 <section class="login_box">
     <h2>TAMBAH ABSEN</h2>
     <form method="post" action="?content=process_addform">
