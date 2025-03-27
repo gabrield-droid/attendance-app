@@ -1,5 +1,8 @@
-<a href="index.php">Kembali</a>
-
+<div class="nav-form">
+    <a href="/">
+        <div><h3>Kembali<h3></div>
+    </a>
+</div>
 <?php
 include "library/getTime.php";
 

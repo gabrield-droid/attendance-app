@@ -1,7 +1,11 @@
 <?php
     $query = mysqli_query($con, "INSERT INTO forms SET name = '$_POST[nama_absen]', tenggat = '$_POST[tenggat]'");
 ?>
-    <a href="index.php">Kembali</a>
+<div class="nav-form">
+    <a href="/">
+        <div><h3>Kembali<h3></div>
+    </a>
+</div>
 <?php
     if ($query) {
 ?>

@@ -13,7 +13,7 @@
         $_SESSION['username'] = $data['username'];
         $_SESSION['password'] = $data['password'];
 
-        header('location: index.php');
+        header('location: /');
     }
     else {
         echo "<p align='center'>Login Gagal</p>";
