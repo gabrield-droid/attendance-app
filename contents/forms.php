@@ -19,7 +19,7 @@
         $no++;
 ?>
 
-<a class="form_detail" href="<?= $action ?>&id=<?= $data['id_form'] ?>&name=<?= $data['name'] ?>">
+<a class="form_detail" href="<?= $action ?>&id=<?= $data['id_form'] ?>">
     <div>
         <h2><?= $data['name'] ?></h2>
         <p>Tenggat: <time datetime=<?= $data['tenggat'] ?>><?= $data['tenggat'] ?></time></p>
