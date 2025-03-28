@@ -112,6 +112,33 @@ hr {
     color: red;
 }
 
+/* FORM ACTIONS NAVIGATORS */
+
+.nav-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.nav-form a {
+    text-decoration: none;
+    color: initial;
+}
+
+.nav-form a div {
+    border-style:solid;
+    padding: 4px;
+}
+
+.nav-form h3 {
+    margin: 0;
+}
+
+.nav-form .form-actions {
+    display: flex;
+    gap: 10px;
+}
+
 /* VIEW FORM DETAIL */
 table {
     width: 100%;
