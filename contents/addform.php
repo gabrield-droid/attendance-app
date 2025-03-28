@@ -1,4 +1,4 @@
-<<div class="nav-form">
+<div class="nav-form">
     <a href="/">
         <div><h3>Kembali<h3></div>
     </a>
