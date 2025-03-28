@@ -20,7 +20,7 @@ if (strtotime($data['tenggat']) - (getTimeFromNTP() + (3600 * 8)) < 0) {
 ?>
 
 <section class="login_box">
-    <h2><?= $_GET['name'] ?></h2>
+    <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
     <form method="post" action="?content=process_fill_form">
         <input type="hidden" name="id_form" id="id_form" value="<?= $_GET['id'] ?>">
         <input type="text" placeholder="nama" name="nama">

@@ -1,4 +1,8 @@
-<a href="index.php">Kembali</a>
+<div class="nav-form">
+    <a href="/">
+        <div><h3>Kembali<h3></div>
+    </a>
+</div>
 <section class="login_box">
     <h2>TAMBAH ABSEN</h2>
     <form method="post" action="?content=process_addform">
