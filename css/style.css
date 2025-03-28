@@ -21,23 +21,28 @@ header h1 {
     padding: 8px;
 }
 
+/* LOGIN INFO */
+
 .login_info {
     margin-bottom: 8px;
-}
-
-.login_info p {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-block-start: 0.5em;
-    padding-block-end: 0.5em;
-    width: max-content;
-    margin-inline: auto;
-}
-
-.logged a {
-    display: block;
     width: max-content;
     margin: auto;
+    margin-top: 10px;
+}
+
+.login_info a {
+    text-decoration: none;
+    color: initial;
+}
+
+.login_info div {
+    display: inline-block;
+    border-style: solid;
+    padding: 4px;
+}
+
+.login_info h3 {
+    margin: 0;
 }
 
 hr {

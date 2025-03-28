@@ -2,8 +2,8 @@
     if (!empty($_SESSION['username']) or !empty($_SESSION['password'])) {
 ?>       
 
-<section class="login_info" class="not_logged">
-    <p>Halo, <?= $_SESSION['username']; ?> | <a href="?content=logout">Keluar</a></p>
+<section class="login_info not_logged">
+    Halo, <?= $_SESSION['username']; ?> | <a href="?content=logout"><div>Keluar</div></a>
 </section>
 
 <?php            
@@ -11,14 +11,16 @@
 ?>
 
 <section class="login_info logged">
-    <p><a href="?content=login">Login untuk membuat absen</a></p>
+    <a href="?content=login">
+        <div><h3>Login untuk membuat absen</h3></div>
+    </a>
 </section>
-    <hr>
 
 <?php
     }
 ?>
 
+<hr>
 <section class="forms_list">
     <?php include "forms.php"; ?>
 </section>
