@@ -1,6 +1,6 @@
 <div class="nav-form">
     <a href="/">
-        <div><h3>Kembali<h3></div>
+        <div class="back-button"><h3>Kembali<h3></div>
     </a>
     <div class="form-actions">
         <a href="?content=edit-form&id=<?= $_GET['id'] ?>">

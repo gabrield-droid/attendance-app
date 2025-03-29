@@ -130,7 +130,7 @@ hr {
     color: initial;
 }
 
-.nav-form a div {
+.nav-form .back-button {
     border-style:solid;
     padding: 4px;
 }
@@ -142,6 +142,11 @@ hr {
 .nav-form .form-actions {
     display: flex;
     gap: 10px;
+}
+
+.form-actions div {
+    border-style:solid;
+    padding: 4px;
 }
 
 /* VIEW FORM DETAIL */

@@ -1,6 +1,6 @@
 <div class="nav-form">
     <a href="?content=form_detail&id=<?= $_GET['id'] ?>">
-        <div><h3>Kembali<h3></div>
+        <div class="back-button"><h3>Kembali<h3></div>
     </a>
 </div>
 <section class="login_box">
