@@ -6,18 +6,18 @@
         <a href="?content=edit-form&id=<?= $_GET['id'] ?>">
             <div><h3>Edit Absen</h3></div>
         </a>
+        <!--
         <a href="?content=export-response-form&id=<?= $_GET['id'] ?>">
             <div><h3>Ekspor absen</h3></div>
-        </a>
-        <a href="?content=copy-link&id=<?= $_GET['id'] ?>">
-            <div><h3>Salin Tautan</h3></div>
         </a>
         <a href="?content=delete-form&id=<?= $_GET['id'] ?>">
             <div><h3>Hapus Absen</h3></div>
         </a>
+        -->
     </div>
 </div>
 <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
+<p><strong>Tautan pengisian:</strong> <a href="<?= $_SERVER['HTTP_HOST'] ?>/?content=fill_form&id=<?= $_GET['id'] ?>"><?= $_SERVER['HTTP_HOST'] ?>/?content=fill_form&id=<?= $_GET['id'] ?></a></p>
 <table>
     <thead>
         <tr>
