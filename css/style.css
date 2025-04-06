@@ -131,7 +131,7 @@ hr {
 }
 
 .nav-form a div {
-    border-style:solid;
+    border-style: solid;
     padding: 4px;
 }
 
@@ -152,4 +152,20 @@ table {
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+/* DELETE BUTTON */
+.delete-button {
+    text-decoration: none;
+    color: red;
+}
+
+.delete-button div {
+    display: inline-block;
+    border-style: solid;
+    padding: 4px;
+}
+
+.delete-button h3 {
+    margin: 0;
 }

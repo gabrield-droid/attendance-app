@@ -10,10 +10,10 @@
         <a href="?content=export-response-form&id=<?= $_GET['id'] ?>">
             <div><h3>Ekspor absen</h3></div>
         </a>
+        -->
         <a href="?content=delete-form&id=<?= $_GET['id'] ?>">
             <div><h3>Hapus Absen</h3></div>
         </a>
-        -->
     </div>
 </div>
 <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
