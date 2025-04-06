@@ -18,6 +18,5 @@
             include "contents.php";
         ?>
         </div>
-        <section></section>
     </body>
 </html>
