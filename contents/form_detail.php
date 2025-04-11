@@ -6,11 +6,9 @@
         <a href="?content=edit-form&id=<?= $_GET['id'] ?>">
             <div><h3>Edit Absen</h3></div>
         </a>
-        <!--
-        <a href="?content=export-response-form&id=<?= $_GET['id'] ?>">
-            <div><h3>Ekspor absen</h3></div>
+        <a href="./contents/process_exportform.php?id=<?= $_GET['id'] ?>">
+            <div><h3>Ekspor Absen</h3></div>
         </a>
-        -->
         <a href="?content=delete-form&id=<?= $_GET['id'] ?>">
             <div><h3>Hapus Absen</h3></div>
         </a>
