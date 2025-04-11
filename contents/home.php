@@ -12,7 +12,7 @@
 
 <section class="login_info logged">
     <a href="?content=login">
-        <div><h3>Login untuk membuat absen</h3></div>
+        <div><h3>Login sebagai admin</h3></div>
     </a>
 </section>
 
