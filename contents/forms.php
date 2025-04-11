@@ -6,7 +6,7 @@
 
 <a class="form_detail" href="?content=addform">
     <div class="add_form">
-        <h2><span>&#43;</span> TAMBAH ABSEN</h2>
+        <h2><span> &#43; </span>TAMBAH ABSEN </h2>
     </div>
 </a>
 
