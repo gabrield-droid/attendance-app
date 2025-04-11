@@ -1,16 +1,16 @@
 <div class="nav-form">
     <a href="/">
-        <div class="back-button"><h3>Kembali<h3></div>
+        <div class="back-button"><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
     </a>
     <div class="form-actions">
         <a href="?content=edit-form&id=<?= $_GET['id'] ?>">
-            <div><h3>Edit Absen</h3></div>
+            <div><h3><span class="symbol"> &#128221; </span><span class="text">Edit Absen </span></h3></div>
         </a>
         <a href="./contents/process_exportform.php?id=<?= $_GET['id'] ?>">
-            <div><h3>Ekspor Absen</h3></div>
+            <div><h3><span class="symbol"> &#128190; </span><span class="text">Ekspor Absen </span></h3></div>
         </a>
         <a href="?content=delete-form&id=<?= $_GET['id'] ?>">
-            <div><h3>Hapus Absen</h3></div>
+            <div><h3><span class="symbol"> &#128465; </span><span class="text">Hapus Absen </span></h3></div>
         </a>
     </div>
 </div>

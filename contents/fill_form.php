@@ -1,6 +1,6 @@
 <div class="nav-form">
     <a href="/">
-        <div class="back-button"><h3>Kembali<h3></div>
+        <div class="back-button"><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
     </a>
 </div>
 <?php

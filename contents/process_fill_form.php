@@ -10,7 +10,11 @@
         timestamp = '$timestamp'
     ");
 ?>
-    <a href="index.php">Kembali</a>
+<div class="nav-form">
+    <a href="/">
+        <div><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
+    </a>
+</div>
 <?php
     if ($query) {
 ?>
