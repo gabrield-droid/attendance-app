@@ -1,7 +1,7 @@
 <?php
     include "../library/config.php";
 
-    $query = mysqli_query($con, "SELECT * FROM records WHERE id_form='$_GET[id]'");
+    $query = mysqli_query($con, "SELECT nama, nim, kelas, timestamp FROM records WHERE id_form='$_GET[id]'");
     $records = mysqli_fetch_all($query, MYSQLI_ASSOC);    
     $form_name = mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'];
     
