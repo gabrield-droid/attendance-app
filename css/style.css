@@ -100,11 +100,16 @@ hr {
     display: block;
     margin: auto;
     margin-bottom: 8px;
+   width: 100%;
 }
 
 .form-box form input[type=submit] {
     border-style: double;
-    background-color: grey;
+    background-color: lightgrey;
+    width: auto;
+    font-weight: bold;
+    font-size: larger;
+    font-family: auto;
 }
 
 /* SUMMARY */
