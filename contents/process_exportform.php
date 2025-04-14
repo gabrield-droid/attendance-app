@@ -7,14 +7,16 @@
     $delimiter = ",";
     
     $f = fopen("php://memory", "w");
-    $fields = array("Nama", "NIM", "Kelas", "Timestamp");
+    $fields = array("No.", "Nama", "NIM", "Kelas", "Timestamp");
     
     fputcsv($f, $fields, $delimiter);
     
     $query = mysqli_query($con, "SELECT nama, nim, kelas, timestamp FROM records WHERE id_form='$_GET[id]'");
+    $no = 0;
     while ($data = mysqli_fetch_array($query)) {
+        $no++;
         $datetime = date_create("@" . $data['timestamp'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
-        $record = array($data['nama'], $data['nim'], $data['kelas'], $datetime);
+        $record = array($no, $data['nama'], $data['nim'], $data['kelas'], $datetime);
         fputcsv($f, $record, $delimiter);
     }
     

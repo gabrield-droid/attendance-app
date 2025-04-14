@@ -21,6 +21,7 @@
 <table>
     <thead>
         <tr>
+            <th>No.</th>
             <th>Nama</th>
             <th>NIM</th>
             <th>Kelas</th>
@@ -37,6 +38,7 @@
 ?>
 
         <tr>
+            <td><?= $no ?></td>
             <td><?= $data['nama'] ?></td>
             <td><?= $data['nim'] ?></td>
             <td><?= $data['kelas'] ?></td>
