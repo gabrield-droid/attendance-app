@@ -9,7 +9,7 @@ include "library/getTime.php";
 $query = mysqli_query($con, "SELECT tenggat FROM forms WHERE id_form='$_GET[id]'");
 $data = mysqli_fetch_array($query);
 
-if (strtotime($data['tenggat']) - (getTimeFromNTP() + (3600 * 8)) < 0) {
+if ($data['tenggat'] - getTimeFromNTP() < 0) {
 ?>
 
 <section class="login_box summary fail">
@@ -21,6 +21,7 @@ if (strtotime($data['tenggat']) - (getTimeFromNTP() + (3600 * 8)) < 0) {
 
 <section class="login_box">
     <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
+    <p><strong>Tenggat:</strong> <?= date_create("@" . $data['tenggat'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
     <form method="post" action="?content=process_fill_form">
         <input type="hidden" name="id_form" id="id_form" value="<?= $_GET['id'] ?>">
         <input type="text" placeholder="nama" name="nama">
