@@ -17,7 +17,7 @@
     if ($query) {
 ?>
 
-    <section class="login_box summary success">
+    <section class="form-box summary success">
         <h2>PENGEDITAN ABSEN BERHASIL</h2>
         <div>
             <p>Nama absen: <?= $_POST['nama_absen'] ?></p>
@@ -29,7 +29,7 @@
     else {
 ?>
 
-    <section class="login_box summary fail">
+    <section class="form-box summary fail">
         <h2>PENGEDITAN ABSEN GAGAL</h2>
 
 <?php

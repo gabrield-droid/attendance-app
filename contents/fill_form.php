@@ -12,14 +12,14 @@ $data = mysqli_fetch_array($query);
 if ($data['tenggat'] - getTimeFromNTP() < 0) {
 ?>
 
-<section class="login_box summary fail">
+<section class="form-box summary fail">
     <h2>TENGGAT PENGISIAN ABSEN TELAH LEWAT</h2>
 
 <?php
 } else {
 ?>
 
-<section class="login_box">
+<section class="form-box">
     <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
     <p><strong>Tenggat:</strong> <?= date_create("@" . $data['tenggat'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
     <form method="post" action="?content=process_fill_form">

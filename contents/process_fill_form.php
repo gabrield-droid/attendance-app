@@ -14,7 +14,7 @@
 <?php
     if ($deadline - $timestamp < 0) {
 ?>
-    <section class="login_box summary fail">
+    <section class="form-box summary fail">
         <h2>TENGGAT PENGISIAN ABSEN TELAH LEWAT</h2>
 
 <?php
@@ -30,7 +30,7 @@
         if ($query) {
 ?>
 
-    <section class="login_box summary success">
+    <section class="form-box summary success">
         <h2>PENGISIAN ABSEN BERHASIL</h2>
         <div>
             <p>Nama: <?= $_POST['nama'] ?></p>
@@ -44,7 +44,7 @@
         else {
 ?>
 
-    <section class="login_box summary fail">
+    <section class="form-box summary fail">
         <h2>PENGISIAN ABSEN GAGAL</h2>
         <div>
             <p>Nama: <?= $_POST['nama'] ?></p>

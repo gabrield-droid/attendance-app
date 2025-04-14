@@ -3,7 +3,7 @@
         <div class="back-button"><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
     </a>
 </div>
-<section class="login_box">
+<section class="form-box">
     <h2>HAPUS ABSEN</h2>
     <!--<form method="post" action="?content=process_deleteform&id=<?= $_GET['id'] ?>">-->
         <p>Apakah Anda yakin ingin menghapus absen ini?</p>
