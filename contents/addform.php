@@ -7,9 +7,9 @@
     <h2>TAMBAH ABSEN</h2>
     <form method="post" action="?content=process_addform">
         <label for="nama_absen">Nama absen:</label>
-        <input type="text" id="nama_absen" placeholder="Nama Absen" name="nama_absen">
+        <input type="text" id="nama_absen" placeholder="Nama absen" name="nama_absen">
         <label for="tenggat">Tenggat isi absen (WITA):</label>
         <input type="datetime-local" id="Tenggat" name="tenggat">
-        <input type="submit" value="Tambahkan">
+        <input type="submit" value="TAMBAHKAN">
     </form>
 </section>

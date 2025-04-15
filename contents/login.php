@@ -4,10 +4,10 @@
     </a>
 </div>
 <section class="form-box">
-    <h2>Login Aplikasi</h2>
+    <h2>MASUK SEBAGAI ADMIN</h2>
     <form method="post" action="?content=process_login">
-        <input type="text" placeholder="Username" name="username">
-        <input type="password" placeholder="Password" name="password">
-        <input type="submit" value="Login">
+        <input type="text" placeholder="Nama pengguna" name="username">
+        <input type="password" placeholder="Kata sandi" name="password">
+        <input type="submit" value="MASUK">
     </form>
 </section>

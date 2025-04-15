@@ -23,7 +23,7 @@
         </a>
     </div>
     <section class="form-box summary fail">
-        <h2>LOGIN GAGAL</h2>
+        <h2>USAHA MASUK GAGAL</h2>
     </section>
     <meta http-equiv='refresh' content='2; url=index.php?content=login'>
 <?php

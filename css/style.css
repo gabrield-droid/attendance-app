@@ -41,6 +41,10 @@ header h1 {
     padding: 4px;
 }
 
+.login_info div:hover {
+    background-color: lightgrey;
+}
+
 .login_info h3 {
     margin: 0;
 }
@@ -105,11 +109,17 @@ hr {
 
 .form-box form input[type=submit] {
     border-style: double;
-    background-color: lightgrey;
+    border-color: black;
+    background-color: #ffffff00;
     width: auto;
     font-weight: bold;
     font-size: larger;
     font-family: auto;
+}
+
+.form-box form input[type=submit]:hover {
+    cursor: pointer;
+    background-color: lightgrey;
 }
 
 /* SUMMARY */
@@ -133,6 +143,10 @@ hr {
 .nav-form a {
     text-decoration: none;
     color: initial;
+}
+
+.nav-form a:hover {
+    background-color: lightgrey;
 }
 
 .nav-form a div {
@@ -169,6 +183,10 @@ table, th, td {
     display: inline-block;
     border-style: solid;
     padding: 4px;
+}
+
+.delete-button div:hover {
+    background-color: #ff000040;
 }
 
 .delete-button h3 {
