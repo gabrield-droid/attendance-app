@@ -6,7 +6,7 @@
 <section class="form-box">
     <h2>HAPUS ABSEN</h2>
         <p>Apakah Anda yakin ingin menghapus absen ini?</p>
-        <h3><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h3>
+        <h3><?= $db_con->query("SELECT name FROM forms WHERE form_id='$_GET[id]'")->fetch_assoc()['name']; ?></h3>
         <a class="delete-button" href="?content=process_deleteform&id=<?= $_GET['id'] ?>">
             <div><h3>HAPUS ABSEN</h3></div>
         </a>

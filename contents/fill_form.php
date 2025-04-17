@@ -6,10 +6,10 @@
 <?php
 include "library/getTime.php";
 
-$query = mysqli_query($con, "SELECT tenggat FROM forms WHERE id_form='$_GET[id]'");
-$data = mysqli_fetch_array($query);
+$query = $db_con->query("SELECT name, deadline_unix FROM forms WHERE form_id='$_GET[id]'");
+$form_properties = $query->fetch_assoc();
 
-if ($data['tenggat'] - getTimeFromNTP() < 0) {
+if ($form_properties['deadline_unix'] - getTimeFromNTP() < 0) {
 ?>
 
 <section class="form-box summary fail">
@@ -20,13 +20,13 @@ if ($data['tenggat'] - getTimeFromNTP() < 0) {
 ?>
 
 <section class="form-box">
-    <h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
-    <p><strong>Tenggat:</strong> <?= date_create("@" . $data['tenggat'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
+    <h2><?= $form_properties['name'] ?></h2>
+    <p><strong>Tenggat:</strong> <?= date_create("@" . $form_properties['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
     <form method="post" action="?content=process_fill_form">
-        <input type="hidden" name="id_form" id="id_form" value="<?= $_GET['id'] ?>">
-        <input type="text" placeholder="Nama" name="nama">
-        <input type="text" placeholder="NIM" name="nim">
-        <input type="text" placeholder="Kelas" name="kelas">
+        <input type="hidden" name="form_id" value="<?= $_GET['id'] ?>">
+        <input type="text" placeholder="Nama" name="name">
+        <input type="text" placeholder="NIM" name="student_id">
+        <input type="text" placeholder="Kelas" name="class">
         <input type="submit" value="ISI ABSEN">
     </form>
 

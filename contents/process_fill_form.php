@@ -2,7 +2,7 @@
     include "library/getTime.php";
 
     $timestamp = getTimeFromNTP();
-    $deadline = mysqli_fetch_array(mysqli_query($con, "SELECT tenggat FROM forms WHERE id_form='$_POST[id_form]'"))['tenggat'];
+    $deadline = $db_con->query("SELECT deadline_unix FROM forms WHERE form_id='$_POST[form_id]'")->fetch_assoc()['deadline_unix'];
 ?>
 
 <div class="nav-form">
@@ -20,12 +20,12 @@
 <?php
     }
     else {
-        $query = mysqli_query($con, "INSERT INTO records SET
-            id_form = '$_POST[id_form]',
-            nama = '$_POST[nama]',
-            kelas = '$_POST[kelas]',
-            nim = '$_POST[nim]',
-            timestamp = '$timestamp'
+        $query = $db_con->query("INSERT INTO records SET
+            form_id = '$_POST[form_id]',
+            name = '$_POST[name]',
+            class = '$_POST[class]',
+            student_id = '$_POST[student_id]',
+            timestamp_unix = '$timestamp'
         ");
         if ($query) {
 ?>
@@ -33,9 +33,9 @@
     <section class="form-box summary success">
         <h2>PENGISIAN ABSEN BERHASIL</h2>
         <div>
-            <p>Nama: <?= $_POST['nama'] ?></p>
-            <p>NIM: <?= $_POST['nim'] ?></p>
-            <p>Kelas: <?= $_POST['kelas'] ?></p>
+            <p>Nama: <?= $_POST['name'] ?></p>
+            <p>NIM: <?= $_POST['student_id'] ?></p>
+            <p>Kelas: <?= $_POST['class'] ?></p>
             <p>Waktu pengisian: <?= date_create("@" . $timestamp)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
 
@@ -47,9 +47,9 @@
     <section class="form-box summary fail">
         <h2>PENGISIAN ABSEN GAGAL</h2>
         <div>
-            <p>Nama: <?= $_POST['nama'] ?></p>
-            <p>NIM: <?= $_POST['nim'] ?></p>
-            <p>Kelas: <?= $_POST['kelas'] ?></p>
+            <p>Nama: <?= $_POST['name'] ?></p>
+            <p>NIM: <?= $_POST['student_id'] ?></p>
+            <p>Kelas: <?= $_POST['class'] ?></p>
             <p>Waktu pengisian: <?= date_create("@" . $timestamp)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
 

@@ -4,8 +4,8 @@
     $pass = "admin";
     $db = "db_attendance";
 
-    $con = mysqli_connect($host, $user, $pass, $db);
-    if (mysqli_connect_errno()) {
-        echo "Koneksi gagal: ".mysqli_connect_errno();
+    $db_con = new mysqli($host, $user, $pass, $db);
+    if ($db_con->connect_errno) {
+        error_log('Koneksi gagal: ' . $db_con->connect_errno);
     }
 ?>

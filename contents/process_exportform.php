@@ -1,7 +1,7 @@
 <?php
     include "../library/config.php";
 
-    $form_name = mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'];
+    $form_name = $db_con->query("SELECT name FROM forms WHERE form_id='$_GET[id]'")->fetch_assoc()['name'];
     $filename =  str_replace(" ", "_", $form_name) . '.csv';
     
     $delimiter = ",";
@@ -11,16 +11,16 @@
     
     fputcsv($f, $fields, $delimiter);
     
-    $query = mysqli_query($con, "SELECT nama, nim, kelas, timestamp FROM records WHERE id_form='$_GET[id]'");
+    $query = $db_con->query("SELECT name, student_id, class, timestamp_unix FROM records WHERE form_id='$_GET[id]'");
     $no = 0;
-    while ($data = mysqli_fetch_array($query)) {
+    while ($record = $query->fetch_assoc()) {
         $no++;
-        $datetime = date_create("@" . $data['timestamp'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
-        $record = array($no, $data['nama'], $data['nim'], $data['kelas'], $datetime);
-        fputcsv($f, $record, $delimiter);
+        $fTimestamp = date_create("@" . $record['timestamp_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
+        $record_csv = array($no, $record['name'], $record['student_id'], $record['class'], $fTimestamp);
+        fputcsv($f, $record_csv, $delimiter);
     }
     
-    mysqli_close($con);
+    $db_con->close();
     
     fseek($f, 0);
 

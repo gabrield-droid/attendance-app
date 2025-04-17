@@ -14,9 +14,14 @@
         </a>
     </div>
 </div>
-<h2><?= mysqli_fetch_array(mysqli_query($con, "SELECT name FROM forms WHERE id_form='$_GET[id]'"))['name'] ?></h2>
-<?php $deadline = mysqli_fetch_array(mysqli_query($con, "SELECT tenggat FROM forms WHERE id_form='$_GET[id]'"))['tenggat']; ?>
-<p><strong>Tenggat absen   :</strong> <?= date_create("@" . $deadline)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
+
+<?php
+    $query = $db_con->query("SELECT name, deadline_unix FROM forms WHERE form_id='$_GET[id]'");
+    $form_properties = $query->fetch_assoc();
+?>
+
+<h2><?= $form_properties['name'] ?></h2>
+<p><strong>Tenggat absen   :</strong> <?= date_create("@" . $form_properties['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
 <p><strong>Tautan pengisian:</strong> <a href="http://<?= $_SERVER['HTTP_HOST'] ?>?content=fill_form&id=<?= $_GET['id'] ?>">http://<?= $_SERVER['HTTP_HOST'] ?>/?content=fill_form&id=<?= $_GET['id'] ?></a></p>
 <table>
     <thead>
@@ -31,18 +36,18 @@
     <tbody>
 
 <?php
-    $query = mysqli_query($con, "SELECT * FROM records WHERE id_form='$_GET[id]'");
+    $query = $db_con->query("SELECT name, student_id, class, timestamp_unix FROM records WHERE form_id='$_GET[id]'");
     $no = 0;
-    while ($data = mysqli_fetch_array($query)) {
+    while ($record = $query->fetch_assoc()) {
         $no++;
 ?>
 
         <tr>
             <td><?= $no ?></td>
-            <td><?= $data['nama'] ?></td>
-            <td><?= $data['nim'] ?></td>
-            <td><?= $data['kelas'] ?></td>
-            <td><?= date_create("@" . $data['timestamp'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></td>
+            <td><?= $record['name'] ?></td>
+            <td><?= $record['student_id'] ?></td>
+            <td><?= $record['class'] ?></td>
+            <td><?= date_create("@" . $record['timestamp_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></td>
         </tr>
 
 <?php

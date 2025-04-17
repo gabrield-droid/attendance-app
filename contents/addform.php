@@ -6,10 +6,10 @@
 <section class="form-box">
     <h2>TAMBAH ABSEN</h2>
     <form method="post" action="?content=process_addform">
-        <label for="nama_absen">Nama absen:</label>
-        <input type="text" id="nama_absen" placeholder="Nama absen" name="nama_absen">
-        <label for="tenggat">Tenggat isi absen (WITA):</label>
-        <input type="datetime-local" id="Tenggat" name="tenggat">
+        <label for="form_name">Nama absen:</label>
+        <input type="text" placeholder="Nama absen" name="form_name">
+        <label for="deadline">Tenggat isi absen (WITA):</label>
+        <input type="datetime-local" name="deadline">
         <input type="submit" value="TAMBAHKAN">
     </form>
 </section>
