@@ -13,18 +13,21 @@
 <?php
     }
 
-    $forms = $db_con->query("SELECT * FROM forms");
-    while ($form = $forms->fetch_assoc()) {
-        $fDeadline = date_create("@" . $form['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
+    $stmt = $db_con->prepare("SELECT * FROM forms"); $stmt->execute();
+    $stmt-> bind_result($formId, $formName, $formDLUnix);
+    while ($stmt->fetch()) {
+        $fDeadline = date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
 ?>
 
-<a class="form_detail" href="<?= $action ?>&id=<?= $form['form_id'] ?>">
+<a class="form_detail" href="<?= $action ?>&id=<?= $formId ?>">
     <div>
-        <h2><?= $form['name'] ?></h2>
+        <h2><?= htmlspecialchars($formName) ?></h2>
         <p>Tenggat: <time datetime=<?= $fDeadline ?>><?= $fDeadline ?></time></p>
     </div>
 </a>
 
 <?php
     }
+    $stmt->close();
+    $db_con->close();
 ?>

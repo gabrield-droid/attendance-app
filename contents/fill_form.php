@@ -6,10 +6,11 @@
 <?php
 include "library/getTime.php";
 
-$query = $db_con->query("SELECT name, deadline_unix FROM forms WHERE form_id='$_GET[id]'");
-$form_properties = $query->fetch_assoc();
+$stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+$stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
+$db_con->close();
 
-if ($form_properties['deadline_unix'] - getTimeFromNTP() < 0) {
+if ($formDLUnix - getTimeFromNTP() < 0) {
 ?>
 
 <section class="form-box summary fail">
@@ -20,8 +21,8 @@ if ($form_properties['deadline_unix'] - getTimeFromNTP() < 0) {
 ?>
 
 <section class="form-box">
-    <h2><?= $form_properties['name'] ?></h2>
-    <p><strong>Tenggat:</strong> <?= date_create("@" . $form_properties['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
+    <h2><?= htmlspecialchars($formName) ?></h2>
+    <p><strong>Tenggat:</strong> <?= date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
     <form method="post" action="?content=process_fill_form">
         <input type="hidden" name="form_id" value="<?= $_GET['id'] ?>">
         <input type="text" placeholder="Nama" name="name">

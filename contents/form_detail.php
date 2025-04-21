@@ -16,12 +16,12 @@
 </div>
 
 <?php
-    $query = $db_con->query("SELECT name, deadline_unix FROM forms WHERE form_id='$_GET[id]'");
-    $form_properties = $query->fetch_assoc();
+    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
 ?>
 
-<h2><?= $form_properties['name'] ?></h2>
-<p><strong>Tenggat absen   :</strong> <?= date_create("@" . $form_properties['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
+<h2><?= htmlspecialchars($formName) ?></h2>
+<p><strong>Tenggat absen   :</strong> <?= date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
 <p><strong>Tautan pengisian:</strong> <a href="http://<?= $_SERVER['HTTP_HOST'] ?>?content=fill_form&id=<?= $_GET['id'] ?>">http://<?= $_SERVER['HTTP_HOST'] ?>/?content=fill_form&id=<?= $_GET['id'] ?></a></p>
 <table>
     <thead>
@@ -36,22 +36,26 @@
     <tbody>
 
 <?php
-    $query = $db_con->query("SELECT name, student_id, class, timestamp_unix FROM records WHERE form_id='$_GET[id]'");
+    $stmt = $db_con->prepare("SELECT name, student_id, class, timestamp_unix FROM records WHERE form_id=?");
+    $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt->bind_result($recordName, $recordStudentID, $recordClass, $recordTSUnix);
     $no = 0;
-    while ($record = $query->fetch_assoc()) {
+    while ($stmt->fetch()) {
         $no++;
 ?>
 
         <tr>
             <td><?= $no ?></td>
-            <td><?= $record['name'] ?></td>
-            <td><?= $record['student_id'] ?></td>
-            <td><?= $record['class'] ?></td>
-            <td><?= date_create("@" . $record['timestamp_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></td>
+            <td><?= htmlspecialchars($recordName) ?></td>
+            <td><?= htmlspecialchars($recordStudentID) ?></td>
+            <td><?= htmlspecialchars($recordClass) ?></td>
+            <td><?= date_create("@" . $recordTSUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></td>
         </tr>
 
 <?php
     }
+    $stmt->close();
+    $db_con->close();
 ?>
     </tbody>
 </table>

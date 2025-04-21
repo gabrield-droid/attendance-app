@@ -2,7 +2,8 @@
     include "library/getTime.php";
 
     $timestamp = getTimeFromNTP();
-    $deadline = $db_con->query("SELECT deadline_unix FROM forms WHERE form_id='$_POST[form_id]'")->fetch_assoc()['deadline_unix'];
+    $stmt = $db_con->prepare("SELECT deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_POST['form_id']); $stmt->execute();
+    $stmt->bind_result($deadline); $stmt->fetch(); $stmt->close();
 ?>
 
 <div class="nav-form">
@@ -20,22 +21,21 @@
 <?php
     }
     else {
-        $query = $db_con->query("INSERT INTO records SET
-            form_id = '$_POST[form_id]',
-            name = '$_POST[name]',
-            class = '$_POST[class]',
-            student_id = '$_POST[student_id]',
-            timestamp_unix = '$timestamp'
+        $stmt = $db_con->prepare("INSERT INTO records SET
+            form_id = ?, name = ?, class = ?, student_id = ?, timestamp_unix = ?
         ");
-        if ($query) {
+        $stmt->bind_param("isssi", $_POST['form_id'], $_POST['name'], $_POST['class'], $_POST['student_id'], $timestamp);
+        $stmt->execute();
+
+        if ($stmt) {
 ?>
 
     <section class="form-box summary success">
         <h2>PENGISIAN ABSEN BERHASIL</h2>
         <div>
-            <p>Nama: <?= $_POST['name'] ?></p>
-            <p>NIM: <?= $_POST['student_id'] ?></p>
-            <p>Kelas: <?= $_POST['class'] ?></p>
+            <p>Nama: <?= htmlspecialchars($_POST['name']) ?></p>
+            <p>NIM: <?= htmlspecialchars($_POST['student_id']) ?></p>
+            <p>Kelas: <?= htmlspecialchars($_POST['class']) ?></p>
             <p>Waktu pengisian: <?= date_create("@" . $timestamp)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
 
@@ -47,15 +47,17 @@
     <section class="form-box summary fail">
         <h2>PENGISIAN ABSEN GAGAL</h2>
         <div>
-            <p>Nama: <?= $_POST['name'] ?></p>
-            <p>NIM: <?= $_POST['student_id'] ?></p>
-            <p>Kelas: <?= $_POST['class'] ?></p>
+            <p>Nama: <?= htmlspecialchars($_POST['name']) ?></p>
+            <p>NIM: <?= htmlspecialchars($_POST['student_id']) ?></p>
+            <p>Kelas: <?= htmlspecialchars($_POST['class']) ?></p>
             <p>Waktu pengisian: <?= date_create("@" . $timestamp)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
 
 <?php
         }
+        $stmt->close();
     }
+    $db_con->close();
 ?>
 
     </section>

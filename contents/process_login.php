@@ -4,17 +4,24 @@
 
     $username = $_POST['username'];
     $password = md5($_POST['password']);
+    
+    $stmt = $db_con->prepare("SELECT username, password FROM users WHERE username=? AND password=?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $stmt->bind_result($u_name, $u_pass);
 
-    $query = $db_con->query("SELECT username, password FROM users WHERE username='$username' AND password='$password'");
-    $data = $query->fetch_assoc();
-
-    if ($query->num_rows > 0) {
-        $_SESSION['username'] = $data['username'];
-        $_SESSION['password'] = $data['password'];
-
+    if ($stmt->fetch()) {
+        $stmt->close();
+        $db_con->close();
+        
+        $_SESSION['username'] = $u_name;
+        $_SESSION['password'] = $u_pass;
+        
         header('location: /');
     }
     else {
+        $stmt->close();
+        $db_con->close();
 ?>
     <div class="nav-form">
         <a href="?content=login">

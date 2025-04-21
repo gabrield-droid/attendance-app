@@ -5,16 +5,17 @@
 </div>
 
 <?php
-    $query = $db_con->query("SELECT name, deadline_unix FROM forms WHERE form_id='$_GET[id]'");
-    $form_properties = $query->fetch_assoc();
-    $fDeadline = date_create("@" . $form_properties['deadline_unix'])->setTimezone(timezone_open("Asia/Makassar"))->format("Y-m-d H:i");
+    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
+    $db_con->close();
+    $fDeadline = date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("Y-m-d H:i");
 ?>
 
 <section class="form-box">
     <h2>EDIT ABSEN</h2>
     <form method="post" action="?content=process_editform&id=<?= $_GET['id'] ?>">
         <label for="form_name">Nama absen:</label>
-        <input type="text" name="form_name" placeholder="<?= $form_properties['name']?>" value="<?= $form_properties['name']?>">
+        <input type="text" name="form_name" placeholder="<?= htmlspecialchars($formName) ?>" value="<?= htmlspecialchars($formName) ?>">
         <label for="deadline">Tenggat isi absen (WITA):</label>
         <input type="datetime-local" name="deadline" placeholder="<?= $fDeadline ?>" value="<?= $fDeadline ?>">
         <input type="submit" value="SIMPAN">

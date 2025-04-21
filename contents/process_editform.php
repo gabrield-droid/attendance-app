@@ -7,20 +7,19 @@
 <?php
     $deadline = date_create($_POST['deadline'], timezone_open("Asia/Makassar"))->getTimestamp();
 
-    $query = $db_con->query("UPDATE forms SET
-        name = '$_POST[form_name]',
-        deadline_unix = '$deadline'
-    WHERE form_id='$_GET[id]'");
-?>
+    $stmt = $db_con->prepare("UPDATE forms SET
+        name = ?, deadline_unix = ?
+    WHERE form_id=?");
+    $stmt->bind_param("sii", $_POST['form_name'], $deadline, $_GET['id']);
+    $stmt->execute();
 
-<?php
-    if ($query) {
+    if ($stmt) {
 ?>
 
     <section class="form-box summary success">
         <h2>PENGEDITAN ABSEN BERHASIL</h2>
         <div>
-            <p>Nama absen: <?= $_POST['form_name'] ?></p>
+            <p>Nama absen: <?= htmlspecialchars($_POST['form_name']) ?></p>
             <p>Tenggat: <?= date_create("@" . $deadline)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
 
@@ -34,6 +33,8 @@
 
 <?php
     }
+    $stmt->close();
+    $db_con->close();
 ?>
 
     </section>

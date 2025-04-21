@@ -5,10 +5,9 @@
 </div>
 
 <?php
-    $query = $db_con->query("DELETE from forms
-    WHERE form_id='$_GET[id]'");
+    $stmt = $db_con->prepare("DELETE from forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
 
-    if ($query) {
+    if ($stmt) {
 ?>
 
     <section class="form-box summary success">
@@ -23,6 +22,8 @@
 
 <?php
     }
+    $stmt->close();
+    $db_con->close();
 ?>
 
     </section>
