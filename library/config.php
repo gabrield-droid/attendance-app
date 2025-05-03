@@ -1,8 +1,17 @@
 <?php
+    include __DIR__ . "/db_config.php";
+
     $host = "localhost";
-    $user = "admin";
-    $pass = "admin";
-    $db = "db_attendance";
+    $user = MYSQL_GUEST_USER;
+    $pass = MYSQL_GUEST_PASS;
+    $db = DB_NAME;
+
+    session_start();
+
+    if (!empty($_SESSION['username']) or !empty($_SESSION['password'])) {
+        $user = MYSQL_ADMIN_USER;
+        $pass = MYSQL_ADMIN_PASS;
+    }
 
     $db_con = new mysqli($host, $user, $pass, $db);
     if ($db_con->connect_errno) {
