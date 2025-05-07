@@ -6,8 +6,6 @@
     $pass = MYSQL_GUEST_PASS;
     $db = DB_NAME;
 
-    session_start();
-
     if (!empty($_SESSION['username']) or !empty($_SESSION['password'])) {
         $user = MYSQL_ADMIN_USER;
         $pass = MYSQL_ADMIN_PASS;
