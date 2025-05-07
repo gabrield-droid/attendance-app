@@ -1,6 +1,7 @@
 <?php
 
 	/**
+	 * Source: https://gist.github.com/bohwaz/6d01bf00fdb4721a601c4b9fc1007d81
 	 * Returns UNIX timestamp from a NTP server (RFC 5905)
 	 *
 	 * @param  string  $host    Server host (default is pool.ntp.org)
