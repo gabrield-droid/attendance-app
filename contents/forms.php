@@ -21,7 +21,7 @@
         include __DIR__ . "/process_deleteform.php";
     }
 
-    $stmt = $db_con->prepare("SELECT * FROM forms"); $stmt->execute();
+    $stmt = $db_con->prepare("SELECT * FROM forms ORDER BY form_id DESC"); $stmt->execute();
     $stmt-> bind_result($formId, $formName, $formDLUnix);
     while ($stmt->fetch()) {
         $fDeadline = date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A");
