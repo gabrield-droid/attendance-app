@@ -43,7 +43,7 @@ echo -n "Enter a MySQL username for admin access  = "; read ADMIN_DBUSER
 echo -n "Enter a MySQL password for admin access  = "; read -s ADMIN_DBPASS; echo
 sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS -e "CREATE USER IF NOT EXISTS '${ADMIN_DBUSER}'@'localhost' IDENTIFIED BY '${ADMIN_DBPASS}'"
 sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS -e "GRANT SELECT, INSERT, UPDATE, DELETE ON \`$DB_NAME\`.\`forms\` TO \`$ADMIN_DBUSER\`@\`localhost\`"
-sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS -e "GRANT SELECT ON \`$DB_NAME\`.\`records\` TO \`$ADMIN_DBUSER\`@\`localhost\`"
+sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS -e "GRANT SELECT, INSERT ON \`$DB_NAME\`.\`records\` TO \`$ADMIN_DBUSER\`@\`localhost\`"
 
 echo -e "\nGuest credentials"
 echo -n "Enter a MySQL username for guest access  = "; read GUEST_DBUSER
