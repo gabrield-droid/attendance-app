@@ -1,6 +1,4 @@
 <?php
-    include "../library/config.php";
-
     $stmt = $db_con->prepare("SELECT name FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
     $stmt->bind_result($form_name); $stmt->fetch(); $stmt->close();
     $filename =  str_replace(" ", "_", $form_name) . '.csv';
