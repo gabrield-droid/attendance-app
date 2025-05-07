@@ -1,18 +1,8 @@
 <?php
-    include "library/getTime.php";
-
     $timestamp = getTimeFromNTP();
     $stmt = $db_con->prepare("SELECT deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_POST['form_id']); $stmt->execute();
     $stmt->bind_result($deadline); $stmt->fetch(); $stmt->close();
-?>
 
-<div class="nav-form">
-    <a href="/">
-        <div><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
-    </a>
-</div>
-
-<?php
     if ($deadline - $timestamp < 0) {
 ?>
     <section class="form-box summary fail">
@@ -57,7 +47,6 @@
         }
         $stmt->close();
     }
-    $db_con->close();
 ?>
 
     </section>

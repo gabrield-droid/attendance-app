@@ -132,6 +132,22 @@ hr {
     color: red;
 }
 
+.form_detail.summary div {
+    text-align: center;
+}
+
+.form_detail.success:hover div {
+    background-color: #00800040;
+}
+
+.form_detail.success:hover div {
+    background-color: #00800040;
+}
+
+.form_detail.fail:hover div {
+    background-color: #ff000040;
+}
+
 /* FORM ACTIONS NAVIGATORS */
 
 .nav-form {
@@ -174,23 +190,19 @@ table, th, td {
 }
 
 /* DELETE BUTTON */
-.delete-button {
-    text-decoration: none;
+.form-box form input[type="submit"].delete-button {
     color: red;
-}
-
-.delete-button div {
+    border-color: red;
+    border: 3px;
     display: inline-block;
     border-style: solid;
     padding: 4px;
+    text-decoration: none;
+    margin-bottom: 0;
 }
 
-.delete-button div:hover {
+.form-box form input[type="submit"].delete-button:hover {
     background-color: #ff000040;
-}
-
-.delete-button h3 {
-    margin: 0;
 }
 
 /* RESPONSIVE SETTINGS */

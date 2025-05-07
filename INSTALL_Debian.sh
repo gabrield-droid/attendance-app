@@ -93,6 +93,12 @@ sudo tee /etc/apache2/sites-available/$VH_NAME > /dev/null <<EOF
     ServerAdmin webmaster@localhost
     DocumentRoot `pwd`
 
+    <Directory `pwd`>
+    	RewriteEngine On
+    	RewriteRule ^([a-z_]+)$ index.php?content=\$1
+    	RewriteRule ^([0-9]+)/([a-z_-]+)$ index.php?content=\$2&id=\$1
+    </Directory>
+
     ErrorLog \${APACHE_LOG_DIR}/error.log
     CustomLog \${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
@@ -101,6 +107,10 @@ echo " Done"
 
 echo -e "\nEnabling VirtualHost configuration file ..."
 sudo a2ensite $VH_NAME
+echo " Done"
+
+echo -e "\nEnabling Apache mod_rewrite module ..."
+sudo a2enmod rewrite
 echo " Done"
 
 echo -e "\nReloading Apache2 HTTP Server ..."

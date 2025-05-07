@@ -5,7 +5,7 @@
 </div>
 <section class="form-box">
     <h2>TAMBAH ABSEN</h2>
-    <form method="post" action="?content=process_addform">
+    <form method="post" action="/home">
         <label for="form_name">Nama absen:</label>
         <input type="text" placeholder="Nama absen" name="form_name">
         <label for="deadline">Tenggat isi absen (WITA):</label>

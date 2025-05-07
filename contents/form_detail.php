@@ -1,28 +1,31 @@
 <div class="nav-form">
-    <a href="/">
+    <a href="/home">
         <div class="back-button"><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
     </a>
     <div class="form-actions">
-        <a href="?content=edit-form&id=<?= $_GET['id'] ?>">
+        <a href="edit-form">
             <div><h3><span class="symbol"> &#128221; </span><span class="text">Edit Absen </span></h3></div>
         </a>
-        <a href="./contents/process_exportform.php?id=<?= $_GET['id'] ?>">
+        <a href="process_exportform">
             <div><h3><span class="symbol"> &#128190; </span><span class="text">Ekspor Absen </span></h3></div>
         </a>
-        <a href="?content=delete-form&id=<?= $_GET['id'] ?>">
+        <a href="delete-form">
             <div><h3><span class="symbol"> &#128465; </span><span class="text">Hapus Absen </span></h3></div>
         </a>
     </div>
 </div>
 
 <?php
+    if ($_POST['deadline'] && $_POST['form_name']) {
+        include __DIR__ . "/process_editform.php";
+    }
     $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
     $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
 ?>
 
 <h2><?= htmlspecialchars($formName) ?></h2>
 <p><strong>Tenggat absen   :</strong> <?= date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
-<p><strong>Tautan pengisian:</strong> <a href="http://<?= $_SERVER['HTTP_HOST'] ?>?content=fill_form&id=<?= $_GET['id'] ?>">http://<?= $_SERVER['HTTP_HOST'] ?>/?content=fill_form&id=<?= $_GET['id'] ?></a></p>
+<p><strong>Tautan pengisian:</strong> <a href="http://<?= $_SERVER['HTTP_HOST'] ?>/<?= $_GET['id'] ?>/fill_form">http://<?= $_SERVER['HTTP_HOST'] ?>/<?= $_GET['id'] ?>/fill_form</a></p>
 <table>
     <thead>
         <tr>

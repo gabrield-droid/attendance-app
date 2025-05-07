@@ -1,9 +1,3 @@
-<div class="nav-form">
-    <a href="?content=form_detail&id=<?= $_GET['id'] ?>">
-        <div><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
-    </a>
-</div>
-
 <?php
     $deadline = date_create($_POST['deadline'], timezone_open("Asia/Makassar"))->getTimestamp();
 
@@ -34,7 +28,6 @@
 <?php
     }
     $stmt->close();
-    $db_con->close();
 ?>
 
     </section>

@@ -1,7 +1,4 @@
 <?php
-    session_start();
-    include "library/config.php";
-
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     
@@ -17,21 +14,15 @@
         $_SESSION['username'] = $u_name;
         $_SESSION['password'] = $u_pass;
         
-        header('location: /');
+        header('location: /home');
     }
     else {
         $stmt->close();
         $db_con->close();
 ?>
-    <div class="nav-form">
-        <a href="?content=login">
-            <div><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
-        </a>
-    </div>
     <section class="form-box summary fail">
         <h2>USAHA MASUK GAGAL</h2>
     </section>
-    <meta http-equiv='refresh' content='2; url=index.php?content=login'>
 <?php
     }
 ?>

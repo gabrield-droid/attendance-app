@@ -1,9 +1,3 @@
-<div class="nav-form">
-    <a href="/">
-        <div><h3><span class="symbol"> &#128281; </span><span>Kembali </span><h3></div>
-    </a>
-</div>
-
 <?php
     $deadline = date_create($_POST['deadline'], timezone_open("Asia/Makassar"))->getTimestamp();
 
@@ -14,9 +8,9 @@
     if ($stmt) {
 ?>
 
-    <section class="form-box summary success">
-        <h2>PENAMBAHAN ABSEN BERHASIL</h2>
+    <section class="form_detail summary success">
         <div>
+            <h2>PENAMBAHAN ABSEN BERHASIL</h2>
             <p>Nama absen: <?= htmlspecialchars($_POST['form_name']) ?></p>
             <p>Tenggat: <?= date_create("@" . $deadline)->setTimezone(timezone_open("Asia/Makassar"))->format("d\/m\/Y H:i:s \W\I\T\A") ?></p>
         </div>
@@ -25,13 +19,14 @@
     } else {
 ?>
 
-    <section class="form-box summary fail">
-        <h2>PENAMBAHAN ABSEN GAGAL</h2>
+    <section class="form_detail summary fail">
+        <div>
+            <h2>PENAMBAHAN ABSEN GAGAL</h2>
+        </div>
 
 <?php
     }
     $stmt->close();
-    $db_con->close();
 ?>
 
     </section>
