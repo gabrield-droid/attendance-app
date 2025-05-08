@@ -17,7 +17,7 @@
 
 <?php
     if ($_POST['deadline'] && $_POST['form_name']) {
-        include __DIR__ . "/process_editform.php";
+        include "contents/process_editform.php";
     }
     $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute();
     $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();

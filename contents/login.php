@@ -6,7 +6,7 @@
 
 <?php
 if ($_POST['username'] && $_POST['password']) {
-    include __DIR__ . "/process_login.php";
+    include "contents/process_login.php";
 }
 ?>
 

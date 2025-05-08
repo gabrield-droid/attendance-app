@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . "/../library/generateID.php";
+    include "library/generateID.php";
     include "library/getTime.php";
 
     $stmt = $db_con->prepare("SELECT form_id FROM forms WHERE form_id=?");

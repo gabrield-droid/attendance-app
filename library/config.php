@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . "/db_config.php";
+    include "library/db_config.php";
 
     $host = "localhost";
     $user = MYSQL_GUEST_USER;

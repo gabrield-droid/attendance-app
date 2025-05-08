@@ -14,11 +14,11 @@
     }
 
     if ($_POST['deadline'] && $_POST['form_name']) {
-        include __DIR__ . "/process_addform.php";
+        include "contents/process_addform.php";
     }
 
     if ($_POST['delete_form_id']) {
-        include __DIR__ . "/process_deleteform.php";
+        include "contents/process_deleteform.php";
     }
 
     $stmt = $db_con->prepare("SELECT form_id, name, deadline_unix FROM forms ORDER BY creation_unix DESC"); $stmt->execute();

@@ -14,7 +14,7 @@
 include "library/getTime.php";
 
 if ($_POST['name'] && $_POST['class'] && $_POST['student_id']) {
-    include __DIR__ . "/process_fill_form.php";
+    include "contents/process_fill_form.php";
 }
 
 $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute();
