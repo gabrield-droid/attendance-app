@@ -1,5 +1,6 @@
 <?php
     include __DIR__ . "/../library/generateID.php";
+    include "library/getTime.php";
 
     $stmt = $db_con->prepare("SELECT form_id FROM forms WHERE form_id=?");
     do {
@@ -9,9 +10,10 @@
     $stmt->close();
 
     $deadline = date_create($_POST['deadline'], timezone_open("Asia/Makassar"))->getTimestamp();
+    $creationTime = getTimeFromNTP();
 
-    $stmt = $db_con->prepare("INSERT INTO forms SET form_id = ?, name = ?, deadline_unix = ?");
-    $stmt->bind_param("ssi", $formID, $_POST['form_name'], $deadline);
+    $stmt = $db_con->prepare("INSERT INTO forms SET form_id = ?, name = ?, deadline_unix = ?, creation_unix = ?");
+    $stmt->bind_param("ssii", $formID, $_POST['form_name'], $deadline, $creationTime);
     $stmt->execute();
 
     if ($stmt) {

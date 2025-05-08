@@ -26,7 +26,8 @@ sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NO
 sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NOT EXISTS \`forms\` (
     \`form_id\` VARCHAR(16) PRIMARY KEY,
     \`name\` VARCHAR(50) NOT NULL,
-    \`deadline_unix\` BIGINT NOT NULL
+    \`deadline_unix\` BIGINT NOT NULL,
+    \`creation_unix\` BIGINT NOT NULL
 )"
 sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NOT EXISTS \`records\` (
     \`input_id\` INT(5) PRIMARY KEY AUTO_INCREMENT,
