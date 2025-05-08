@@ -5,7 +5,7 @@
 </div>
 
 <?php
-    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute();
     $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
     $db_con->close();
     $fDeadline = date_create("@" . $formDLUnix)->setTimezone(timezone_open("Asia/Makassar"))->format("Y-m-d H:i");

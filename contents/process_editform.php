@@ -4,7 +4,7 @@
     $stmt = $db_con->prepare("UPDATE forms SET
         name = ?, deadline_unix = ?
     WHERE form_id=?");
-    $stmt->bind_param("sii", $_POST['form_name'], $deadline, $_GET['id']);
+    $stmt->bind_param("sis", $_POST['form_name'], $deadline, $_GET['id']);
     $stmt->execute();
 
     if ($stmt) {

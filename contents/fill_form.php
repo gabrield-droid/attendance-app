@@ -17,7 +17,7 @@ if ($_POST['name'] && $_POST['class'] && $_POST['student_id']) {
     include __DIR__ . "/process_fill_form.php";
 }
 
-$stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+$stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute();
 $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
 $db_con->close();
 

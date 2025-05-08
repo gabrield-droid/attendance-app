@@ -19,7 +19,7 @@
     if ($_POST['deadline'] && $_POST['form_name']) {
         include __DIR__ . "/process_editform.php";
     }
-    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt = $db_con->prepare("SELECT name, deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute();
     $stmt->bind_result($formName, $formDLUnix); $stmt->fetch(); $stmt->close();
 ?>
 
@@ -40,7 +40,7 @@
 
 <?php
     $stmt = $db_con->prepare("SELECT name, student_id, class, timestamp_unix FROM records WHERE form_id=?");
-    $stmt->bind_param("i", $_GET['id']); $stmt->execute();
+    $stmt->bind_param("s", $_GET['id']); $stmt->execute();
     $stmt->bind_result($recordName, $recordStudentID, $recordClass, $recordTSUnix);
     $no = 0;
     while ($stmt->fetch()) {

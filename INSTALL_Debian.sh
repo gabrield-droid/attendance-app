@@ -24,7 +24,7 @@ sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NO
     \`password\` VARCHAR(40) NOT NULL
 )"
 sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NOT EXISTS \`forms\` (
-    \`form_id\` INT(3) PRIMARY KEY AUTO_INCREMENT,
+    \`form_id\` VARCHAR(16) PRIMARY KEY,
     \`name\` VARCHAR(50) NOT NULL,
     \`deadline_unix\` BIGINT NOT NULL
 )"
@@ -33,7 +33,7 @@ sudo mysql -u $MYSQL_USER --password=$MYSQL_PASS $DB_NAME -e "CREATE TABLE IF NO
     \`student_id\` VARCHAR(15) NOT NULL,
     \`name\` VARCHAR(70) NOT NULL,
     \`class\` VARCHAR(10) NOT NULL,
-    \`form_id\` INT(3) NOT NULL,
+    \`form_id\` VARCHAR(16) NOT NULL,
     \`timestamp_unix\` BIGINT NOT NULL,
     FOREIGN KEY (\`form_id\`) REFERENCES \`forms\`(\`form_id\`) ON DELETE CASCADE
 )"
@@ -96,7 +96,7 @@ sudo tee /etc/apache2/sites-available/$VH_NAME > /dev/null <<EOF
     <Directory `pwd`>
     	RewriteEngine On
     	RewriteRule ^([a-z_]+)$ index.php?content=\$1
-    	RewriteRule ^([0-9]+)/([a-z_-]+)$ index.php?content=\$2&id=\$1
+    	RewriteRule ^([A-Za-z0-9_-]{16})/([a-z_-]+)$ index.php?content=\$2&id=\$1
     </Directory>
 
     ErrorLog \${APACHE_LOG_DIR}/error.log

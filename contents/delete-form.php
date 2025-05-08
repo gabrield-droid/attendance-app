@@ -1,5 +1,5 @@
 <?php
-    $stmt = $db_con->prepare("SELECT name FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_GET['id']); $stmt->execute(); $stmt->bind_result($formName); $stmt->fetch();
+    $stmt = $db_con->prepare("SELECT name FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_GET['id']); $stmt->execute(); $stmt->bind_result($formName); $stmt->fetch();
     $stmt->close();
     $db_con->close();
 ?>

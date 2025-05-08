@@ -1,6 +1,6 @@
 <?php
     $timestamp = getTimeFromNTP();
-    $stmt = $db_con->prepare("SELECT deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("i", $_POST['form_id']); $stmt->execute();
+    $stmt = $db_con->prepare("SELECT deadline_unix FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_POST['form_id']); $stmt->execute();
     $stmt->bind_result($deadline); $stmt->fetch(); $stmt->close();
 
     if ($deadline - $timestamp < 0) {
@@ -14,7 +14,7 @@
         $stmt = $db_con->prepare("INSERT INTO records SET
             form_id = ?, name = ?, class = ?, student_id = ?, timestamp_unix = ?
         ");
-        $stmt->bind_param("isssi", $_POST['form_id'], $_POST['name'], $_POST['class'], $_POST['student_id'], $timestamp);
+        $stmt->bind_param("ssssi", $_POST['form_id'], $_POST['name'], $_POST['class'], $_POST['student_id'], $timestamp);
         $stmt->execute();
 
         if ($stmt) {
