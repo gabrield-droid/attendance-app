@@ -8,6 +8,7 @@ A simple web app for managing attendance using deadline-based form submissions.
 - Interface language: :indonesia: Indonesian.
 - Each form includes a name and a deadline
 - A form cannot be filled once its deadline has passed.
+- Time is displayed in Central Indonesian Time (GMT+8).
 
 ### Administrators (registered users) can:
 1. View the list of forms.
