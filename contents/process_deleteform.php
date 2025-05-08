@@ -1,5 +1,5 @@
 <?php
-    $stmt = $db_con->prepare("DELETE from forms WHERE form_id=?"); $stmt->bind_param("s", $_POST['delete_form_id']); $stmt->execute();
+    $stmt = $db_con->prepare("DELETE FROM forms WHERE form_id=?"); $stmt->bind_param("s", $_POST['delete_form_id']); $stmt->execute();
 
     if ($stmt) {
 ?>
